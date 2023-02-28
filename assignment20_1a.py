@@ -43,7 +43,7 @@ for line in data:
         
 # at this point, step1 holds list of all one-grams with the punctuation attached
         
-        
+clean_only = []
     
 # loop through again to separate the punctuation/non-letters
 for one_gram in step1:
@@ -68,10 +68,12 @@ for one_gram in step1:
                 
         # also add the cleaned up word itself
         one_grams.append(cleaned)
+        clean_only.append(cleaned)
         
     # if no non-alpha characters, then we just add the item as is
     else:
         one_grams.append(one_gram)
+        clean_only.append(one_gram)
 
 
 
@@ -80,6 +82,17 @@ f = open("data/one_grams.txt", "w")
 for item in one_grams:
     f.write(item + '\n')
 f.close()
+
+
+
+# alternatively, a data file which ignores the punctuation
+f = open("data/one_grams_clean.txt", "w")
+for item in clean_only:
+    f.write(item + '\n')
+f.close()
+
+
+
 
 
 

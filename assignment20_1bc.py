@@ -68,35 +68,16 @@ def sentiment_plot(z, delta_h = 0):
         # add the average to the appropriate list
         sentiments.append(list_avg(sentiment_window))
         
-    
-    
-    # # plot the results
-    # if i == None:
-    #     fig, ax = plt.subplots()
-    # elif i == 0:
-    #     ax = fig.add_subplot(gs[i])
-    # else:
-    #     ax = fig.add_subplot(gs[i], sharex=ax)
+
     
     # starting x value = midpoint of the window
     start_x = int(window_size/2)
     
-    # set title based on input parameters
-    # title = "Stranger Things Subtitle Sentiment, T = " + str(window_size)
-    # if delta_h > 0:
-    #     title += ", delta_h = " + str(delta_h)
         
     # set up x values running from midpoint of first window to midpoint of last window
     x = list(range(start_x, len(data)-start_x+1))
     
-    # # build the plot
-    # plt.plot(x, sentiments)
-    # plt.title(title)
-    # plt.xlabel('Word number i')
-    # plt.ylabel('h_avg')
-    
-    # plt.show()
-    
+
     return x, sentiments
     
 
@@ -114,44 +95,44 @@ z_list = [1, 1.5, 2, 2.5, 3, 3.5, 4]
 
 
 
-# # 1b
-# x_list = []
-# y_list = []
-# for i in range(len(z_list)):
-#     x, y = sentiment_plot(z=z_list[i])
-#     x_list.append(x)
-#     y_list.append(y)
+# 1b
+x_list = []
+y_list = []
+for i in range(len(z_list)):
+    x, y = sentiment_plot(z=z_list[i])
+    x_list.append(x)
+    y_list.append(y)
     
     
-# # build the figure of 7 plots
-# gs = gridspec.GridSpec(7,1)
-# fig = plt.figure(figsize=(14, 28))
+# build the figure of 7 plots
+gs = gridspec.GridSpec(7,1)
+fig = plt.figure(figsize=(14, 28))
 
-# xlab = 'Word number i'
-# ylab = 'h_avg'
+xlab = 'Word number i'
+ylab = 'h_avg'
 
-# # first plot
-# ax = fig.add_subplot(gs[0])
-# ax.plot(x_list[0],y_list[0])
-# ax.set_xlabel(xlab)
-# ax.set_ylabel(ylab)
-# title = "Stranger Things Subtitles, T = 10^" + str(z_list[0])
-# ax.set_title(title)
+# first plot
+ax = fig.add_subplot(gs[0])
+ax.plot(x_list[0],y_list[0])
+ax.set_xlabel(xlab)
+ax.set_ylabel(ylab)
+title = "Stranger Things Subtitles, T = 10^" + str(z_list[0])
+ax.set_title(title)
 
-# # subsequent plots
-# for i in range(1,len(z_list)):
-#     if len(x_list[i]) != len(y_list[i]):
-#         x_list[i] = x_list[i][:-1]
-#     ax = fig.add_subplot(gs[i], sharex=ax)
-#     ax.plot(x_list[i],y_list[i])
-#     ax.set_xlabel(xlab)
-#     ax.set_ylabel(ylab)
-#     title = "Stranger Things Subtitles, T = 10^" + str(z_list[i])
-#     ax.set_title(title)
+# subsequent plots
+for i in range(1,len(z_list)):
+    if len(x_list[i]) != len(y_list[i]):
+        x_list[i] = x_list[i][:-1]
+    ax = fig.add_subplot(gs[i], sharex=ax)
+    ax.plot(x_list[i],y_list[i])
+    ax.set_xlabel(xlab)
+    ax.set_ylabel(ylab)
+    title = "Stranger Things Subtitles, T = 10^" + str(z_list[i])
+    ax.set_title(title)
     
-# fig.tight_layout(h_pad=1)
+fig.tight_layout(h_pad=1)
     
-# plt.show()
+plt.show()
 
 
 
